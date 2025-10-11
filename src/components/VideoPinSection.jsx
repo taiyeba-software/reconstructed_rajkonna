@@ -94,7 +94,7 @@ export const VideoPinSection = () => {
     >
       <video
         className="w-full h-full object-cover filter-glitter"
-        src="/assets/videos/pin-video.mp4"
+        src="/assets/videos/hero.mp4"
         autoPlay
         muted
         loop
