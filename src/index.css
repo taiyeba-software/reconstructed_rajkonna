@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 @font-face {
   font-family: "EduNSWACTCursive-SemiBold";
   src: url("/assets/fonts/cursive_like/EduNSWACTCursive-SemiBold.ttf") format("truetype");
@@ -274,21 +275,23 @@
         height: 100%;
         z-index: 0; 
       }
-
+/**
       .video-box {
         will-change: clip-path;
       }
-
+*/
       .general-title {
     transition: clip-path 0.6s ease-out;
       }
+
     .video-box {
       transition: box-shadow 0.3s;
     }
+    /*
     .video-box.revealed {
       box-shadow: 0 0 50px hsla(var(--primary) / 0.4);
     }
-
+*/
         
     .clip-radiant {
       clip-path: polygon(

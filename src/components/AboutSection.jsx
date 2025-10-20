@@ -2,11 +2,24 @@
 import { useEffect, useRef, useState } from "react";
 import { animated, useSpring } from "@react-spring/web";
 import { StarBackground } from "./StarBackground";
+import { useInView } from "react-intersection-observer";
+
 
 
 export const AboutSection = () => {
   const ref = useRef(null);
   const [scrollY, setScrollY] = useState(0);
+
+  const [refText, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.3,
+  });
+
+  const textSpring = useSpring({
+    opacity: inView ? 1 : 0,
+    y: inView ? 0 : 40,
+    config: { tension: 120, friction: 18 },
+  });
 
   // Track scroll position
   useEffect(() => {
@@ -38,6 +51,9 @@ export const AboutSection = () => {
   const leafSpring = useSpring({ transform: `translateY(${scrollY * -100}px)` });
   const peelSpring = useSpring({ transform: `translateY(${scrollY * -80}px)` });
   const cardsSpring = useSpring({ transform: `translateY(${scrollY * -120}px)` });
+  const textSpring2 = useSpring({opacity: inView ? 1 : 0, y: inView ? 0 : 30,delay: inView ? 300 : 0,});
+
+
 
   return (
     <section
@@ -50,6 +66,7 @@ export const AboutSection = () => {
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-1 gap-50 items-center">
         {/* Text Content */}
+        {/*}
         <div className="space-y-6 text-left">
           <h2 className="text-4xl md:text-5xl font-semibold leading-tight">
             CLEAN, CONSCIOUS,<br />
@@ -60,7 +77,34 @@ export const AboutSection = () => {
             Unreasonably honest products that truly work. Be kind to skin and the planet — no exceptions.
           </p>
         </div>
-      
+      */}
+
+          <animated.div
+            ref={refText}
+            style={textSpring}
+            className="space-y-6 text-left will-change-transform will-change-opacity"
+          >
+            <h2
+              className="text-4xl md:text-5xl font-semibold leading-tight"
+              style={{ fontFamily: "EduCursive" }}
+            >
+              CLEAN, CONSCIOUS,<br />
+              PERFORMANCE <br />
+              <span className="italic font-serif text-foreground/90">skincare.</span>
+            </h2>
+
+            <p
+              className="text-muted-foreground max-w-md"
+              style={textSpring2}
+            >
+              Unreasonably honest products that truly work. Be kind to skin and the planet — no exceptions.
+            </p>
+          </animated.div>
+
+
+
+
+
         {/* Parallax Visual Section */}
         
         <div className="relative min-h-[600px] w-full">

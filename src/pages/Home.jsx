@@ -10,23 +10,22 @@ import { RajkonnaFooter } from "../components/RajkonnaFooter";
 
 const Home = () => (
   <>
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      <StarBackground />
+    <div className="min-h-screen  text-foreground overflow-x-hidden bg-star">
       <Navbar />
       {/* Sticky Hero + Video should be isolated */}
       <section className="relative z-[20] min-h-screen">
         <VideoPinSection />
         <HeroSection />
       </section>
-    </div>
 
-    {/* About section should appear normally, ABOVE z-10 */}
-    <section className="relative z-[30]">
-      <AboutSection />
-      <Product/>
-      <Contact/>
-      <RajkonnaFooter/>
-    </section>
+    </div>
+     {/* About section should appear normally, ABOVE z-10 */}
+      <section className="relative z-[30]">
+        <AboutSection />
+        <Product/>
+        <Contact/>
+        <RajkonnaFooter/>
+      </section>
   </>
 );
 

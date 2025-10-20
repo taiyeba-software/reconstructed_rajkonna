@@ -1,88 +1,120 @@
+
 "use client";
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { useScroll, useSpring, animated } from "@react-spring/web";
+import { useRef } from "react";
+import bgImg from "/assets/contact-bg.jpg"; // your skincare image
 import { StarBackground } from "./StarBackground";
 
-export const Contact= () => {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
+export const Contact = () => {
+  const ref = useRef();
+  const { scrollYProgress } = useScroll({
+  // tracks whole window scroll instead of a specific ref
+  container: typeof window !== "undefined" ? window : undefined,
+  });
 
-  const handleChange = (e) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  // Parallax layer animations
+  const imageSpring = useSpring({
+  transform: scrollYProgress.to((y) => `translateY(${y * -50}px) scale(1.1)`),
+  });
+
+  const whiteLayerSpring = useSpring({
+    transform: scrollYProgress.to((y) => `translateY(${y * -100}px)`),
+  });
+
+  const blackLayerSpring = useSpring({
+    transform: scrollYProgress.to((y) => `translateY(${y * -150}px)`),
+  });
+
+  
 
   return (
-    <section className="relative w-full min-h-screen bg-background px-6 py-20 flex flex-col items-center text-[#7ca4a1]" id="contact">
-        <StarBackground/>
-        <StarBackground/>
-      <h2 className="text-4xl font-bold mb-6 text-amber-900">Contact Rajkonna</h2>
-      <p className="max-w-lg text-center mb-10 px-4 text-foreground">
-        Have questions or want to start your skincare ritual? Reach out to us!
-      </p>
+    <section
+      ref={ref}
+      id="contact"
+      className="relative w-full h-[150vh] overflow-hidden grid grid-cols-1 md:grid-cols-2"
+    >
+      {/* 🌸 Layer 1 – Background Image */}
+      <animated.div
+        style={imageSpring}
+        className="absolute inset-0 w-full h-[200vh]"
+      >
+        <img
+          src={bgImg}
+          alt="Skincare products"
+          className="w-full h-full object-cover"
+        />
+      </animated.div>
 
-      {submitted ? (
-        <div className="text-center text-lg text-[#c69fac] font-semibold">
-          Thank you for reaching out! We’ll get back to you soon.
-        </div>
-      ) : (
-        <form
-          onSubmit={handleSubmit}
-          className="w-full max-w-md flex flex-col gap-6"
-          noValidate
+      <animated.div
+          style={whiteLayerSpring}
+          className="absolute top-[50vh] top-md-[62vh] left-0 w-full h-[80vh]  bg-background backdrop-blur-sm shadow-lg flex justify-start items-center px-16 py-10 text-gray-700"
         >
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            required
-            value={formData.name}
-            onChange={handleChange}
-            className="px-4 py-3 rounded-md border border-[#c69fac] focus:outline-none focus:ring-2 focus:ring-[#C8145A] bg-[#fff5f8] text-[#7ca4a1]"
-          />
+          <StarBackground/>
+          <StarBackground/>
 
+          <div className="w-1/2 flex justify-evenly flex-wrap gap-10">
+            <div className="flex flex-col space-y-1">
+              <h3 className="text-md font-bold text-[#C8145A]" style={{ fontFamily: "EduCursive" }}>EXPLORE</h3>
+              <ul className="space-y-1 text-sm" style={{ fontFamily: "MPLUSRounded" }}>
+                <li>Shop</li>
+                <li>Philosophy</li>
+                <li>Gallery</li>
+                <li>Journal</li>
+                <li>Sign Up/Login</li>
+              </ul>
+            </div>
+
+            <div className="flex flex-col space-y-2">
+              <h3 className="text-md font-bold text-[#C8145A]"  style={{ fontFamily: "EduCursive" }} >FOLLOW US</h3>
+              <p style={{ fontFamily: "MPLUSRounded" }}>Instagram</p>
+              <p style={{ fontFamily: "MPLUSRounded" }}>Facebook</p>
+            </div>
+
+            <div className="flex flex-col space-y-2">
+              <h3 className="text-md font-bold text-[#C8145A]"  style={{ fontFamily: "EduCursive" }}>CONTACT US</h3>
+              <p style={{ fontFamily: "MPLUSRounded" }}>tk@brandsofbia.com</p>
+              <p style={{ fontFamily: "MPLUSRounded" }}>1111-2222-3333</p>
+            </div>
+          </div>
+        </animated.div>
+
+  
+
+
+      {/* 🖤 Layer 3 – Black contact form */}
+      
+      <animated.div
+        style={blackLayerSpring}
+        className="absolute right-0 top-[50vh] bg-black text-white rounded-l-3xl shadow-2xl p-14 w-[45%] h-[80vh]"
+      >
+        <h2 className="text-2xl font-bold mb-4 tracking-wide" style={{ fontFamily: "EduCursive" }}>
+          HEAR MORE FROM US
+        </h2>
+        <p className="text-gray-400 mb-8 text-sm"  style={{ fontFamily: "MPLUSRounded" }}>
+          Get the latest news about skincare tips and new products.
+        </p>
+
+        <form className="space-y-6">
           <input
             type="email"
-            name="email"
-            placeholder="Your Email"
-            required
-            value={formData.email}
-            onChange={handleChange}
-            className="px-4 py-3 rounded-md border border-[#c69fac] focus:outline-none focus:ring-2 focus:ring-[#C8145A] bg-[#fff5f8] text-[#7ca4a1]"
+            placeholder="YOUR EMAIL"
+            className="w-full px-[15vw] py-1 rounded-full border border-gray-500 bg-transparent text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C8145A] text-sm"
           />
-
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            rows={5}
-            required
-            value={formData.message}
-            onChange={handleChange}
-            className="px-4 py-3 rounded-md border border-[#c69fac] focus:outline-none focus:ring-2 focus:ring-[#C8145A] bg-[#fff5f8] text-[#7ca4a1]"
-          />
-
-          <motion.button
+          <animated.button
             type="submit"
-            whileHover={{
-              scale: 1.08,
-              rotate: -1,
-              boxShadow: "0 0 26px rgba(200, 20, 90, 0.6)",
-              filter: "brightness(1.2) blur(0.5px)",
-              backgroundColor: "#C8145A",
-            }}
-            whileTap={{ scale: 0.96 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="mt-6 px-6 py-3 rounded-full bg-[#C8145A] text-white font-mplus shadow-md animate-glow text-center"
-            title="Send Message"
+            className="block mx-auto bg-gray-700 hover:bg-[#C8145A] text-white px-8 py-3 rounded-full text-md transition-all"
           >
-            Send Message
-          </motion.button>
+            SUBSCRIBE
+          </animated.button>
         </form>
-      )}
+
+        <p className="mt-8 text-xs text-gray-500 text-center hidden md:block ">
+          No Spam, only quality articles that make you more radiant. You can opt out anytime.
+        </p>
+      </animated.div>
+     
+
 
     </section>
   );

@@ -4,13 +4,13 @@ import { StarBackground } from "./StarBackground";
 
 export const RajkonnaFooter = () => {
   return (
-    <footer className="relative w-full bg-gradient-to-b bg-[#7ca4a1] text-[#81414d] py-12 px-6 overflow-hidden">
+    <footer className="relative w-full bg-gradient-to-b bg-background text-[#81414d] py-12 px-6 overflow-hidden">
         <StarBackground/>
       <div className="absolute inset-0 pointer-events-none opacity-30 animate-pulse bg-[url('/stars.svg')] bg-repeat" />
 
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
         <div className="text-center md:text-left">
-          <h3 className="text-3xl font-spectral font-bold text-foreground">
+          <h3 className="text-3xl  font-bold text-foreground" style={{ fontFamily: "MPLUSRounded" }}>
             Rajkonna
         </h3>
 
