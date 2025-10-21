@@ -19,6 +19,7 @@ const Home = () => (
       </section>
 
     </div>
+    
      {/* About section should appear normally, ABOVE z-10 */}
       <section className="relative z-[30]">
         <AboutSection />

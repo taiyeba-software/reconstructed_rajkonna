@@ -16,7 +16,7 @@ export const AboutSection = () => {
   });
 
   const textSpring = useSpring({
-    opacity: inView ? 1 : 0,
+    opacity: inView ? 1 : 0.8,
     y: inView ? 0 : 40,
     config: { tension: 120, friction: 18 },
   });

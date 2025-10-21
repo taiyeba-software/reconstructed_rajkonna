@@ -77,7 +77,7 @@ export const Moisture = () => {
     <section className="relative  w-full min-h-screen px-1 py-20 overflow-hidden bg-[#7ca4a1]">
      
         <h1 className="text-3xl lg:text-5xl font-bold text-center mb-10 pr-8 text-primary-foreground/80">
-            RajKonna <span className="italic">Moisturizing Magic</span>
+            RajKonna <span className="italic" >Moisturizing Magic</span>
             </h1>
         <StarBackground/>
         <StarBackground/>

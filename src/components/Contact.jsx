@@ -73,7 +73,7 @@ export const Contact = () => {
 
             <div className="flex flex-col space-y-2">
               <h3 className="text-md font-bold text-[#C8145A]"  style={{ fontFamily: "EduCursive" }}>CONTACT US</h3>
-              <p style={{ fontFamily: "MPLUSRounded" }}>tk@brandsofbia.com</p>
+              <p style={{ fontFamily: "MPLUSRounded" }}>Rajkonna@gmail.com</p>
               <p style={{ fontFamily: "MPLUSRounded" }}>1111-2222-3333</p>
             </div>
           </div>

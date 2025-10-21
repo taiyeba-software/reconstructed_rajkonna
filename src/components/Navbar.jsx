@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -16,6 +17,27 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navContainerRef = useRef(null); // Ref for the main nav container
+
+    useEffect(() => {
+  const body = document.body;
+
+  if (isMenuOpen) {
+    body.style.overflow = "hidden";
+    body.style.position = "fixed";
+    body.style.width = "100%";
+  } else {
+    body.style.overflow = "";
+    body.style.position = "";
+    body.style.width = "";
+  }
+
+  return () => {
+    body.style.overflow = "";
+    body.style.position = "";
+    body.style.width = "";
+  };
+}, [isMenuOpen]);
+
 
   // 1. Replaced Framer Motion's useScroll with a standard React useEffect for scroll detection
   useEffect(() => {
@@ -60,14 +82,16 @@ export const Navbar = () => {
       )}
     >
       <div className="container flex items-center justify-between py-4" style={{ fontFamily: "MPLUS-Rounded" }}>
-        {/* Logo */}
+        
         <div className="flex items-center gap-4">
-          <a href="#hero" className="text-xl font-bold text-primary flex items-center">
-            <img src="/images/Rajkonna.png" alt="Brand Logo" className="h-10" />
-          </a>
+         <div className="text-xl font-bold text-primary flex items-center">
+          <img src="/images/Rajkonna.png" alt="Brand Logo" className="h-10" />
         </div>
 
-        {/* Desktop Nav Links */}
+
+        </div>
+
+      
         <div className="hidden md:flex items-center space-x-6">
           {navItems.map((item, key) => (
             // Replaced <motion.a> with <a> and added "nav-link" class
@@ -77,16 +101,16 @@ export const Navbar = () => {
               className="nav-link relative text-sm font-light text-foreground/80 hover:text-primary transition-colors duration-300 group"
             >
               {item.name}
-              {/* Replaced <motion.span> with <span> and added "underline-span" class */}
+              
               <span
                 className="underline-span absolute left-0 -bottom-0.5 h-[1px] bg-primary block"
-                style={{ width: 0 }} // Initial state set with inline style
+                style={{ width: 0 }} 
               />
             </a>
           ))}
         </div>
 
-        {/* Desktop Action Buttons */}
+       
         <div className="hidden md:flex items-center gap-3">
           <button className="px-3 py-1 text-sm font-light text-foreground hover:text-primary border border-border hover:border-primary rounded-full transition flex items-center gap-1">
             <LogIn size={18} /> Log In
@@ -97,7 +121,7 @@ export const Navbar = () => {
           <AudioToggle />
         </div>
 
-        {/* Mobile Menu Toggle */}
+        
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="md:hidden p-2 text-foreground z-50"
@@ -106,7 +130,7 @@ export const Navbar = () => {
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
-        {/* Mobile Menu Overlay */}
+       
         <div
           className={cn(
             "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
@@ -116,17 +140,17 @@ export const Navbar = () => {
               : "opacity-0 pointer-events-none"
           )}
         >
-          {/* Mobile menu content remains the same */}
-          <div className="flex flex-col items-center space-y-8 text-xl">
+         
+          <div className="flex flex-col items-center space-y-8 text-xl" style={{ fontFamily: "EduCursive" }}>
             {navItems.map((item, key) => (
-              <a key={key} href={item.href} className="text-foreground/80 hover:text-primary hover:underline underline-offset-4 transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
+              <a key={key} href={item.href} className="text-foreground/80 hover:text-primary hover:underline underline-offset-4 transition-colors duration-300" onClick={() => setIsMenuOpen(false)} style={{ fontFamily: "EduCursive" }}>
                 {item.name}
               </a>
             ))}
-            <button className="text-foreground/80 hover:text-primary flex items-center gap-2 hover:underline underline-offset-4" style={{ fontFamily: "MPLUS-Rounded" }} onClick={() => setIsMenuOpen(false)}>
+            <button className="text-foreground/80 hover:text-primary flex items-center gap-2 hover:underline underline-offset-4" style={{ fontFamily: "EduCursive" }} onClick={() => setIsMenuOpen(false)}>
               <LogIn size={20} /> Log In
             </button>
-            <button className="text-foreground/80 hover:text-primary flex items-center gap-2 hover:underline underline-offset-4" style={{ fontFamily: "MPLUS-Rounded" }} onClick={() => setIsMenuOpen(false)}>
+            <button className="text-foreground/80 hover:text-primary flex items-center gap-2 hover:underline underline-offset-4" style={{ fontFamily: "EduCursive" }} onClick={() => setIsMenuOpen(false)}>
               <ShoppingBag size={20} /> Cart
             </button>
             <AudioToggle />
