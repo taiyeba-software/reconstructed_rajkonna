@@ -46,12 +46,30 @@ const productData = [
   },
   {
     id: 5,
-    title: "Olive Oil",
+    title: "Toner",
     desc: "Balances & preps skin.",
     img: "/Moisture/2.png",
     hoverImg: "/Moisture/20.jpg",
     price: 28,
     discountedPrice: 21,
+  },
+  {
+    id: 6,
+    title: "Light Moisturizer",
+    desc: "Vitamin C infused.",
+    img: "/Moisture/1.png",
+    hoverImg: "/Moisture/10.jpg",
+    price: 25,
+    discountedPrice: 18,
+  },
+  {
+    id: 7,
+    title: "All Purpose Toner",
+    desc: "Deep hydration overnight.",
+    img: "/Moisture/2.png",
+    hoverImg: "/Moisture/20.jpg",
+    price: 20,
+    discountedPrice: 15,
   },
 ];
 

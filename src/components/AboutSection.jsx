@@ -65,19 +65,7 @@ export const AboutSection = () => {
       <StarBackground />
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-1 gap-50 items-center">
-        {/* Text Content */}
-        {/*}
-        <div className="space-y-6 text-left">
-          <h2 className="text-4xl md:text-5xl font-semibold leading-tight">
-            CLEAN, CONSCIOUS,<br />
-            PERFORMANCE <br />
-            <span className="italic font-serif text-foreground/90">skincare.</span>
-          </h2>
-          <p className="text-muted-foreground max-w-md">
-            Unreasonably honest products that truly work. Be kind to skin and the planet — no exceptions.
-          </p>
-        </div>
-      */}
+        
 
           <animated.div
             ref={refText}
@@ -124,56 +112,56 @@ export const AboutSection = () => {
             src="/images/rose2.png"
             alt="Leaf"
             style={leafSpring}
-            className="absolute top-0 right-10 w-28 sm:w-32 z-20"
+            className="absolute top-0 right-10 w-28 sm:w-32 z-20 hidden md:block"
           />
 
           <animated.img
             src="/images/rose.png"
             alt="Peel"
             style={peelSpring}
-            className="absolute top-100 right-10 w-28 sm:w-32 z-20"
+            className="absolute top-100 right-10 w-28 sm:w-32 z-20 hidden md:block"
           />
 
           <animated.img
             src="/images/rose1.png"
             alt="Peel"
             style={peelSpring}
-            className="absolute top-50 right-20 w-28 sm:w-32 z-20"
+            className="absolute top-50 right-20 w-28 sm:w-32 z-20 hidden md:block"
           />
 
           <animated.img
             src="/images/rose.png"
             alt="Peel"
             style={peelSpring}
-            className="absolute top-100 left-20 w-28 sm:w-32 z-20"
+            className="absolute top-100 left-20 w-28 sm:w-32 z-20 hidden md:block"
           />
 
           <animated.img
             src="/images/rose1.png"
             alt="Peel"
             style={peelSpring}
-            className="absolute top-120 left-150 w-28 sm:w-32 z-20"
+            className="absolute top-120 left-150 w-28 sm:w-32 z-20 hidden md:block"
           />
 
           <animated.img
             src="/images/rose.png"
             alt="Peel"
             style={peelSpring}
-            className="absolute top-0 left-20 w-28 sm:w-32 z-20"
+            className="absolute top-0 left-20 w-28 sm:w-32 z-20 hidden md:block"
           />
 
           <animated.img
             src="/images/rose2.png"
             alt="Peel"
             style={peelSpring}
-            className="absolute bottom-150 right-190 w-28 sm:w-32 z-20"
+            className="absolute bottom-150 right-190 w-28 sm:w-32 z-20 hidden md:block"
           />
 
           <animated.img
             src="/images/rose.png"
             alt="Peel"
             style={peelSpring}
-            className="absolute bottom-150 right-80 w-28 sm:w-32 z-20"
+            className="absolute bottom-150 right-80 w-28 sm:w-32 z-20 hidden md:block"
           />
 
           <animated.img

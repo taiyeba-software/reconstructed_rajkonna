@@ -52,6 +52,24 @@ const productData = [
     price: 30,
     discountedPrice: 24,
   },
+   {
+    id: 6,
+    title: "Glow Booster FaceWash",
+    desc: "Vitamin C infused.",
+    img: "/facewash/1.png",
+    hoverImg: "/facewash/10.jpg",
+    price: 25,
+    discountedPrice: 18,
+  },
+   {
+    id: 7,
+    title: "Glow Booster FaceWash",
+    desc: "Vitamin C infused.",
+    img: "/facewash/1.png",
+    hoverImg: "/facewash/10.jpg",
+    price: 25,
+    discountedPrice: 18,
+  },
 ];
 
 export const Facewash = () => {
